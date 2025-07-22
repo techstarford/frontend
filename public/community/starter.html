@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starter Membership | Macford's Developer Community</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6c63ff;
+            --primary-dark: #564fcc;
+            --secondary: #ff6584;
+            --dark: #1a1a2e;
+            --darker: #16213e;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            
+            --font-main: 'Space Grotesk', sans-serif;
+            --font-secondary: 'Poppins', sans-serif;
+            
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-secondary);
+            background-color: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .signup-header {
+            padding: 30px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: var(--font-main);
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        /* Main Content */
+        .signup-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            padding: 60px 0 100px;
+        }
+        
+        @media (max-width: 768px) {
+            .signup-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Plan Summary */
+        .plan-summary {
+            background-color: var(--dark);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            height: fit-content;
+            position: static;
+            top: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .plan-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .plan-name {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-family: var(--font-main);
+        }
+        
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .plan-price span {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .plan-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .plan-features i {
+            color: var(--primary);
+        }
+        
+        .change-plan {
+            color: var(--primary);
+            text-decoration: underline;
+            display: inline-block;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .change-plan:hover {
+            color: var(--secondary);
+        }
+        
+        /* Signup Form */
+        .signup-form {
+            background-color: var(--dark);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .form-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            font-family: var(--font-main);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 5px;
+            color: var(--light);
+            font-family: var(--font-secondary);
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background-color: rgba(108,99,255,0.1);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 576px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+       
+        }
+        
+        .card-element {
+            background-color: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 5px;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: var(--font-main);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .secure-payment {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        .signup-footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .signup-footer a {
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .signup-footer a:hover {
+            color: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="signup-header">
+        <div class="container">
+            <a href="/index.html" class="logo">Mac<span>ford</span></a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="signup-container">
+            <!-- Plan Summary -->
+            <aside class="plan-summary">
+                <div class="plan-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h2 class="plan-name">Starter Membership</h2>
+                <div class="plan-price">FREE<span></span></div>
+                
+                <ul class="plan-features">
+                    <li><i class="fas fa-check"></i> Access to basic tutorials</li>
+                    <li><i class="fas fa-check"></i> Monthly Q&A session</li>
+                    <li><i class="fas fa-check"></i> Community Discord access</li>
+                    <li><i class="fas fa-check"></i> Weekly newsletter</li>
+                    <li><i class="fas fa-check"></i> Limited code reviews</li>
+                </ul>
+                
+                <a href="/membership.html" class="change-plan">Change plan</a>
+            </aside>
+            
+            <!-- Signup Form -->
+            <div class="signup-form">
+                <h2 class="form-title">Create Your Account</h2>
+                
+                <form id="payment-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first-name" class="form-label">First Name</label>
+                            <input type="text" id="first-name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="last-name" class="form-label">Last Name</label>
+                            <input type="text" id="last-name" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password" class="form-label">Create Password</label>
+                        <input type="password" id="password" class="form-control" required minlength="8">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">Confirm Password</label>
+                        <input type="password" id="password" class="form-control" required minlength="8">
+                    </div>
+                    
+                    <div class="form-group">
+                        <!-- <label class="form-label">Payment Information</label>
+                        <div class="card-element" id="card-element">
+                             Stripe Card Element will be inserted here 
+                        </div> -->
+                        <div id="card-errors" role="alert" style="color: #ff6584; font-size: 0.9rem; margin-top: 5px;"></div>
+                    </div>
+                    
+                    <button type="submit" class="btn">Start My Membership</button>
+                    
+                    <div class="secure-payment">
+                        <i class="fas fa-lock"></i>
+                        <span>Secure payment processed by Stripe</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="signup-footer">
+        <div class="container">
+            <p>By joining, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+            <p>Need help? <a href="mailto:support@macford.dev">Contact our support team</a></p>
+            <p style="margin-top: 15px;"><small>7-day free trial available</small></p>
+        </div>
+    </footer>
+
+    <!-- Stripe.js for payment processing -->
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <script>
+        // Initialize Stripe with your public key
+        const stripe = Stripe('pk_test_your_publishable_key_here');
+        const elements = stripe.elements();
+        
+        // Create card element
+        const card = elements.create('card', {
+            style: {
+                base: {
+                    color: '#f8f9fa',
+                    fontFamily: '"Poppins", sans-serif',
+                    fontSmoothing: 'antialiased',
+                    fontSize: '16px',
+                    '::placeholder': {
+                        color: '#6c757d'
+                    }
+                },
+                invalid: {
+                    color: '#ff6584',
+                    iconColor: '#ff6584'
+                }
+            }
+        });
+        
+        card.mount('#card-element');
+        
+        // Handle real-time validation errors
+        card.addEventListener('change', function(event) {
+            const displayError = document.getElementById('card-errors');
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = '';
+            }
+        });
+        
+        // Handle form submission
+        const form = document.getElementById('payment-form');
+        
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const submitButton = form.querySelector('button');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Processing...';
+            
+            // Create payment method
+            const { paymentMethod, error } = await stripe.createPaymentMethod({
+                type: 'card',
+                card: card,
+                billing_details: {
+                    name: document.getElementById('first-name').value + ' ' + document.getElementById('last-name').value,
+                    email: document.getElementById('email').value
+                }
+            });
+            
+            if (error) {
+                // Show error
+                const errorElement = document.getElementById('card-errors');
+                errorElement.textContent = error.message;
+                submitButton.disabled = false;
+                submitButton.textContent = 'Start My Membership';
+            } else {
+                // Send paymentMethod.id to your server
+                // This is where you would typically make an AJAX call to your backend
+                // For this example, we'll simulate a successful payment
+                setTimeout(function() {
+                    alert('Payment successful! Welcome to the Starter community.');
+                    window.location.href = 'membership-success.html';
+                }, 1500);
+            }
+        });
+    </script>
+</body>
+</html>
