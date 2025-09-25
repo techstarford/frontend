@@ -270,7 +270,7 @@ header.scrolled {
 
 /* Particles Background */
 #particles-js {
-  /* position: absolute; */
+  position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
@@ -580,6 +580,7 @@ header.scrolled {
 
 .blog-slider {
   position: relative;
+  gap: 20px; 
 }
 
 .blog-slider .slick-list {
